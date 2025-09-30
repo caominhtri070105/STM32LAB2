@@ -348,6 +348,7 @@ int counter1=50;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (counter1 == 0){
 		update7SEG(index_led);
+		selectDigit(index_led);
 		index_led++;
 		counter1=50;
 	}
