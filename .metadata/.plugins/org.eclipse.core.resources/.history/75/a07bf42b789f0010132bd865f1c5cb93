@@ -389,12 +389,12 @@ int counter1=25;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timer_run();
 	if (counter1 == 0){
-		update7SEG(index_led);
-		index_led++;
+		update7SEG(index_led++);
 		counter1=25;
 	}
 	if (index_led>=MAX_LED) index_led=0;
 	if (counter<=0){
+		HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		counter=100;
 	}

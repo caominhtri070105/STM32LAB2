@@ -59,7 +59,8 @@ static void MX_TIM2_Init(void);
 int timer0_counter=0;
 int timer0_flag=0;
 int TIMER_CYCLE=10;
-void setTimer0 (int duration){
+void set
+Timer0 (int duration){
 	timer0_counter=duration/TIMER_CYCLE;
 	timer0_flag=0;
 }
@@ -237,10 +238,6 @@ int main(void)
   setTimer0(1000);
   while (1)
   {
-	  if (timer0_flag==1){
-		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port,RED_LED_Pin);
-		  setTimer0(2000);
-	  }
 	  second++;
 	  if (second >=60){
 		  second=0;
@@ -254,6 +251,7 @@ int main(void)
 		  hour=0;
 	  }
 	  updateClockBuffer();
+	  HAL_Delay(1000);
 
     /* USER CODE END WHILE */
 
@@ -395,6 +393,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	}
 	if (index_led>=MAX_LED) index_led=0;
 	if (counter<=0){
+		HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
 		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		counter=100;
 	}
