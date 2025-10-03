@@ -111,9 +111,10 @@ int main(void)
   {
 	  if (timer0_flag==1){
 		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port,RED_LED_Pin);
+		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
+		  second++;
 		  setTimer0(2000);
 	  }
-	  second++;
 	  if (second >=60){
 		  second=0;
 		  minute++;
@@ -267,7 +268,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	}
 	if (index_led>=MAX_LED) index_led=0;
 	if (counter<=0){
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		counter=100;
 	}
 	counter--;
