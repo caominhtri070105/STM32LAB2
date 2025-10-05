@@ -232,7 +232,6 @@ int main(void)
   setTimer2(250);
   while (1)
   {
-	  update7SEG(index_led);
 	  updateClockBuffer();
 	  if (timer1_flag==1){
 		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
@@ -252,6 +251,7 @@ int main(void)
 	      setTimer1(1000);
 	  }
 	  if (timer2_flag==1){
+		  update7SEG(index_led);
 		  index_led++;
 		  setTimer2(250);
 	  }

@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000162c7  00000000  00000000  0002af00  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00009483  00000000  00000000  000411c7  2**0
+ 17 .debug_line   00009485  00000000  00000000  000411c7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082022  00000000  00000000  0004a64a  2**0
+ 18 .debug_str    00082022  00000000  00000000  0004a64c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000cc66c  2**0
+ 19 .comment      00000053  00000000  00000000  000cc66e  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000026b0  00000000  00000000  000cc6c0  2**2
+ 20 .debug_frame  000026b0  00000000  00000000  000cc6c4  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -737,112 +737,112 @@ int main(void)
  8000620:	f000 f966 	bl	80008f0 <setTimer2>
   while (1)
   {
-	  update7SEG(index_led);
- 8000624:	4b28      	ldr	r3, [pc, #160]	; (80006c8 <main+0xcc>)
- 8000626:	681b      	ldr	r3, [r3, #0]
- 8000628:	4618      	mov	r0, r3
- 800062a:	f7ff ff1d 	bl	8000468 <update7SEG>
 	  updateClockBuffer();
- 800062e:	f7ff ffa5 	bl	800057c <updateClockBuffer>
+ 8000624:	f7ff ffaa 	bl	800057c <updateClockBuffer>
 	  if (timer1_flag==1){
- 8000632:	4b26      	ldr	r3, [pc, #152]	; (80006cc <main+0xd0>)
- 8000634:	681b      	ldr	r3, [r3, #0]
- 8000636:	2b01      	cmp	r3, #1
- 8000638:	d12f      	bne.n	800069a <main+0x9e>
+ 8000628:	4b27      	ldr	r3, [pc, #156]	; (80006c8 <main+0xcc>)
+ 800062a:	681b      	ldr	r3, [r3, #0]
+ 800062c:	2b01      	cmp	r3, #1
+ 800062e:	d12f      	bne.n	8000690 <main+0x94>
 		  HAL_GPIO_TogglePin(RED_LED_GPIO_Port, RED_LED_Pin);
- 800063a:	2120      	movs	r1, #32
- 800063c:	4824      	ldr	r0, [pc, #144]	; (80006d0 <main+0xd4>)
- 800063e:	f000 fd55 	bl	80010ec <HAL_GPIO_TogglePin>
+ 8000630:	2120      	movs	r1, #32
+ 8000632:	4826      	ldr	r0, [pc, #152]	; (80006cc <main+0xd0>)
+ 8000634:	f000 fd5a 	bl	80010ec <HAL_GPIO_TogglePin>
 		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
- 8000642:	2110      	movs	r1, #16
- 8000644:	4822      	ldr	r0, [pc, #136]	; (80006d0 <main+0xd4>)
- 8000646:	f000 fd51 	bl	80010ec <HAL_GPIO_TogglePin>
+ 8000638:	2110      	movs	r1, #16
+ 800063a:	4824      	ldr	r0, [pc, #144]	; (80006cc <main+0xd0>)
+ 800063c:	f000 fd56 	bl	80010ec <HAL_GPIO_TogglePin>
 		  second++;
- 800064a:	4b22      	ldr	r3, [pc, #136]	; (80006d4 <main+0xd8>)
- 800064c:	681b      	ldr	r3, [r3, #0]
- 800064e:	3301      	adds	r3, #1
- 8000650:	4a20      	ldr	r2, [pc, #128]	; (80006d4 <main+0xd8>)
- 8000652:	6013      	str	r3, [r2, #0]
+ 8000640:	4b23      	ldr	r3, [pc, #140]	; (80006d0 <main+0xd4>)
+ 8000642:	681b      	ldr	r3, [r3, #0]
+ 8000644:	3301      	adds	r3, #1
+ 8000646:	4a22      	ldr	r2, [pc, #136]	; (80006d0 <main+0xd4>)
+ 8000648:	6013      	str	r3, [r2, #0]
 		  if (second >=60){
- 8000654:	4b1f      	ldr	r3, [pc, #124]	; (80006d4 <main+0xd8>)
- 8000656:	681b      	ldr	r3, [r3, #0]
- 8000658:	2b3b      	cmp	r3, #59	; 0x3b
- 800065a:	dd07      	ble.n	800066c <main+0x70>
+ 800064a:	4b21      	ldr	r3, [pc, #132]	; (80006d0 <main+0xd4>)
+ 800064c:	681b      	ldr	r3, [r3, #0]
+ 800064e:	2b3b      	cmp	r3, #59	; 0x3b
+ 8000650:	dd07      	ble.n	8000662 <main+0x66>
 		  	   second=0;
- 800065c:	4b1d      	ldr	r3, [pc, #116]	; (80006d4 <main+0xd8>)
- 800065e:	2200      	movs	r2, #0
- 8000660:	601a      	str	r2, [r3, #0]
+ 8000652:	4b1f      	ldr	r3, [pc, #124]	; (80006d0 <main+0xd4>)
+ 8000654:	2200      	movs	r2, #0
+ 8000656:	601a      	str	r2, [r3, #0]
 		  	   minute++;
- 8000662:	4b1d      	ldr	r3, [pc, #116]	; (80006d8 <main+0xdc>)
- 8000664:	681b      	ldr	r3, [r3, #0]
- 8000666:	3301      	adds	r3, #1
- 8000668:	4a1b      	ldr	r2, [pc, #108]	; (80006d8 <main+0xdc>)
- 800066a:	6013      	str	r3, [r2, #0]
+ 8000658:	4b1e      	ldr	r3, [pc, #120]	; (80006d4 <main+0xd8>)
+ 800065a:	681b      	ldr	r3, [r3, #0]
+ 800065c:	3301      	adds	r3, #1
+ 800065e:	4a1d      	ldr	r2, [pc, #116]	; (80006d4 <main+0xd8>)
+ 8000660:	6013      	str	r3, [r2, #0]
 		  	  }
 		  if (minute >=60){
- 800066c:	4b1a      	ldr	r3, [pc, #104]	; (80006d8 <main+0xdc>)
- 800066e:	681b      	ldr	r3, [r3, #0]
- 8000670:	2b3b      	cmp	r3, #59	; 0x3b
- 8000672:	dd07      	ble.n	8000684 <main+0x88>
+ 8000662:	4b1c      	ldr	r3, [pc, #112]	; (80006d4 <main+0xd8>)
+ 8000664:	681b      	ldr	r3, [r3, #0]
+ 8000666:	2b3b      	cmp	r3, #59	; 0x3b
+ 8000668:	dd07      	ble.n	800067a <main+0x7e>
 		  	   minute=0;
- 8000674:	4b18      	ldr	r3, [pc, #96]	; (80006d8 <main+0xdc>)
- 8000676:	2200      	movs	r2, #0
- 8000678:	601a      	str	r2, [r3, #0]
+ 800066a:	4b1a      	ldr	r3, [pc, #104]	; (80006d4 <main+0xd8>)
+ 800066c:	2200      	movs	r2, #0
+ 800066e:	601a      	str	r2, [r3, #0]
 		  	   hour++;
- 800067a:	4b18      	ldr	r3, [pc, #96]	; (80006dc <main+0xe0>)
- 800067c:	681b      	ldr	r3, [r3, #0]
- 800067e:	3301      	adds	r3, #1
- 8000680:	4a16      	ldr	r2, [pc, #88]	; (80006dc <main+0xe0>)
- 8000682:	6013      	str	r3, [r2, #0]
+ 8000670:	4b19      	ldr	r3, [pc, #100]	; (80006d8 <main+0xdc>)
+ 8000672:	681b      	ldr	r3, [r3, #0]
+ 8000674:	3301      	adds	r3, #1
+ 8000676:	4a18      	ldr	r2, [pc, #96]	; (80006d8 <main+0xdc>)
+ 8000678:	6013      	str	r3, [r2, #0]
 		  	  }
 		  if (hour >=24){
- 8000684:	4b15      	ldr	r3, [pc, #84]	; (80006dc <main+0xe0>)
- 8000686:	681b      	ldr	r3, [r3, #0]
- 8000688:	2b17      	cmp	r3, #23
- 800068a:	dd02      	ble.n	8000692 <main+0x96>
+ 800067a:	4b17      	ldr	r3, [pc, #92]	; (80006d8 <main+0xdc>)
+ 800067c:	681b      	ldr	r3, [r3, #0]
+ 800067e:	2b17      	cmp	r3, #23
+ 8000680:	dd02      	ble.n	8000688 <main+0x8c>
 		  	   hour=0;
- 800068c:	4b13      	ldr	r3, [pc, #76]	; (80006dc <main+0xe0>)
- 800068e:	2200      	movs	r2, #0
- 8000690:	601a      	str	r2, [r3, #0]
+ 8000682:	4b15      	ldr	r3, [pc, #84]	; (80006d8 <main+0xdc>)
+ 8000684:	2200      	movs	r2, #0
+ 8000686:	601a      	str	r2, [r3, #0]
 		  	  }
 	      setTimer1(1000);
- 8000692:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
- 8000696:	f000 f911 	bl	80008bc <setTimer1>
+ 8000688:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
+ 800068c:	f000 f916 	bl	80008bc <setTimer1>
 	  }
 	  if (timer2_flag==1){
- 800069a:	4b11      	ldr	r3, [pc, #68]	; (80006e0 <main+0xe4>)
- 800069c:	681b      	ldr	r3, [r3, #0]
- 800069e:	2b01      	cmp	r3, #1
- 80006a0:	d107      	bne.n	80006b2 <main+0xb6>
+ 8000690:	4b12      	ldr	r3, [pc, #72]	; (80006dc <main+0xe0>)
+ 8000692:	681b      	ldr	r3, [r3, #0]
+ 8000694:	2b01      	cmp	r3, #1
+ 8000696:	d10c      	bne.n	80006b2 <main+0xb6>
+		  update7SEG(index_led);
+ 8000698:	4b11      	ldr	r3, [pc, #68]	; (80006e0 <main+0xe4>)
+ 800069a:	681b      	ldr	r3, [r3, #0]
+ 800069c:	4618      	mov	r0, r3
+ 800069e:	f7ff fee3 	bl	8000468 <update7SEG>
 		  index_led++;
- 80006a2:	4b09      	ldr	r3, [pc, #36]	; (80006c8 <main+0xcc>)
+ 80006a2:	4b0f      	ldr	r3, [pc, #60]	; (80006e0 <main+0xe4>)
  80006a4:	681b      	ldr	r3, [r3, #0]
  80006a6:	3301      	adds	r3, #1
- 80006a8:	4a07      	ldr	r2, [pc, #28]	; (80006c8 <main+0xcc>)
+ 80006a8:	4a0d      	ldr	r2, [pc, #52]	; (80006e0 <main+0xe4>)
  80006aa:	6013      	str	r3, [r2, #0]
 		  setTimer2(250);
  80006ac:	20fa      	movs	r0, #250	; 0xfa
  80006ae:	f000 f91f 	bl	80008f0 <setTimer2>
 	  }
 	  if (index_led>=MAX_LED) index_led=0;
- 80006b2:	4b05      	ldr	r3, [pc, #20]	; (80006c8 <main+0xcc>)
+ 80006b2:	4b0b      	ldr	r3, [pc, #44]	; (80006e0 <main+0xe4>)
  80006b4:	681b      	ldr	r3, [r3, #0]
  80006b6:	2204      	movs	r2, #4
  80006b8:	4293      	cmp	r3, r2
  80006ba:	dbb3      	blt.n	8000624 <main+0x28>
- 80006bc:	4b02      	ldr	r3, [pc, #8]	; (80006c8 <main+0xcc>)
+ 80006bc:	4b08      	ldr	r3, [pc, #32]	; (80006e0 <main+0xe4>)
  80006be:	2200      	movs	r2, #0
  80006c0:	601a      	str	r2, [r3, #0]
-	  update7SEG(index_led);
+	  updateClockBuffer();
  80006c2:	e7af      	b.n	8000624 <main+0x28>
  80006c4:	2000005c 	.word	0x2000005c
- 80006c8:	20000048 	.word	0x20000048
- 80006cc:	20000050 	.word	0x20000050
- 80006d0:	40010800 	.word	0x40010800
- 80006d4:	20000018 	.word	0x20000018
- 80006d8:	20000014 	.word	0x20000014
- 80006dc:	20000010 	.word	0x20000010
- 80006e0:	20000058 	.word	0x20000058
+ 80006c8:	20000050 	.word	0x20000050
+ 80006cc:	40010800 	.word	0x40010800
+ 80006d0:	20000018 	.word	0x20000018
+ 80006d4:	20000014 	.word	0x20000014
+ 80006d8:	20000010 	.word	0x20000010
+ 80006dc:	20000058 	.word	0x20000058
+ 80006e0:	20000048 	.word	0x20000048
 
 080006e4 <SystemClock_Config>:
 /**
