@@ -222,14 +222,6 @@ void updateLEDMatrix(int index){
     HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, (data & 0x20) ? GPIO_PIN_RESET : GPIO_PIN_SET);
     HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, (data & 0x40) ? GPIO_PIN_RESET : GPIO_PIN_SET);
     HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, (data & 0x80) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, (index == 0) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM1_GPIO_Port, ENM1_Pin, (index == 1) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM2_GPIO_Port, ENM2_Pin, (index == 2) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM3_GPIO_Port, ENM3_Pin, (index == 3) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM4_GPIO_Port, ENM4_Pin, (index == 4) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM5_GPIO_Port, ENM5_Pin, (index == 5) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM6_GPIO_Port, ENM6_Pin, (index == 6) ? GPIO_PIN_RESET : GPIO_PIN_SET);
-    HAL_GPIO_WritePin(ENM7_GPIO_Port, ENM7_Pin, (index == 7) ? GPIO_PIN_RESET : GPIO_PIN_SET);
 	switch (index){
 	case 0:
 		HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET);
