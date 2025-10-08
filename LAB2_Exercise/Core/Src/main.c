@@ -251,6 +251,15 @@ void updateLEDMatrix(int index){
 		break;
 	}
 }
+void shiftLeft()
+{
+    uint8_t first_col = matrix_buffer[0];
+    for (int i = 0; i < MAX_LED_MATRIX - 1; i++)
+    {
+        matrix_buffer[i] = matrix_buffer[i + 1];
+    }
+    matrix_buffer[MAX_LED_MATRIX - 1] = first_col;
+}
 /* USER CODE END 0 */
 
 /**
@@ -309,6 +318,7 @@ int main(void)
 	  		  if (hour >=24){
 	  		  	   hour=0;
 	  		  	  }
+	  		  shiftLeft();
 	  	      setTimer1(1000);
 	  	  }
 	  	  if (timer2_flag==1){
